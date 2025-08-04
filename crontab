@@ -1,0 +1,16 @@
+# Surf Report Update Schedule
+# Times are in Eastern Time (container timezone is set to America/New_York)
+
+# 5:00 AM ET - Early morning surf check
+0 5 * * * /scripts/surf-update.sh >> /var/log/cron/surf.log 2>&1
+
+# 9:00 AM ET - Morning surf check  
+0 9 * * * /scripts/surf-update.sh >> /var/log/cron/surf.log 2>&1
+
+# 1:00 PM ET - Midday surf check
+0 13 * * * /scripts/surf-update.sh >> /var/log/cron/surf.log 2>&1
+
+# 4:00 PM ET - Afternoon surf check
+0 16 * * * /scripts/surf-update.sh >> /var/log/cron/surf.log 2>&1
+
+# Add a newline at the end (required for cron)

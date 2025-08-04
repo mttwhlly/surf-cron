@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  surf-cron:
+    build: .
+    container_name: surf-cron
+    restart: unless-stopped
+    environment:
+      - VERCEL_URL=${VERCEL_URL}
+      - CRON_SECRET=${CRON_SECRET}
+      - TZ=America/New_York
+    volumes:
+      # Persist logs so you can check them
+      - ./logs:/var/log/cron
+    healthcheck:
+      test: ["CMD", "ps", "aux | grep crond | grep -v grep"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    # Very minimal resource usage
+    deploy:
+      resources:
+        limits:
+          memory: 32M
+          cpus: '0.1'
+        reservations:
+          memory: 16M
+          cpus: '0.05'
