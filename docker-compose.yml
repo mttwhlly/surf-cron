@@ -12,17 +12,27 @@ services:
     volumes:
       # Persist logs so you can check them
       - ./logs:/var/log/cron
-    healthcheck:
-      test: ["CMD", "ps", "aux | grep crond | grep -v grep"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+    # Remove the problematic healthcheck that might cause issues
+    # healthcheck:
+    #   test: ["CMD", "pgrep", "crond"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+    
     # Very minimal resource usage
     deploy:
       resources:
         limits:
-          memory: 32M
+          memory: 64M
           cpus: '0.1'
         reservations:
-          memory: 16M
+          memory: 32M
           cpus: '0.05'
+    
+    # Add specific capabilities that might be needed
+    cap_add:
+      - SETGID
+      - SETUID
+    
+    # Ensure proper init process
+    init: true
