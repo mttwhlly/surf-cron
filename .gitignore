@@ -1,2 +1,8 @@
-.env
-codealike.json
+# Logs
+*.log
+
+# Environment files
+.env*
+
+# Temporary files
+/tmp/
