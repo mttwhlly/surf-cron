@@ -7,7 +7,7 @@ echo "==========================================="
 
 # Environment variables with defaults
 BUN_SERVICE_URL="${BUN_SERVICE_URL:-https://xoc8k88s8o044kk4080k4kwc.mttwhlly.cc}"
-VERCEL_URL="${VERCEL_URL:-https://surf-report-rouge.vercel.app}"
+VERCEL_URL="${VERCEL_URL:-https://canisurf.today}"
 CRON_SECRET="${CRON_SECRET:-surf-forecast-refresh-2024-secure-key}"
 
 # Validate required environment variables
